@@ -93,6 +93,13 @@ def carregar_livros():
     """Lê o CSV e já devolve os livros prontos para usar."""
     return preparar_livros(ler_livros())
 
+def buscar_por_titulo(livros, busca):
+    livros_filtrados = []
+    for livro in livros:
+        if busca.lower().replace("'", "") in livro['titulo'].lower().replace("'", ""):
+            livros_filtrados.append(livro)
+    return livros_filtrados
+
 
 if __name__ == "__main__":
     livros = ler_livros()
